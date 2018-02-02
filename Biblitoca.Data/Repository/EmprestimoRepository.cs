@@ -9,5 +9,13 @@ namespace Biblitoca.Data.Repository
 {
     public class EmprestimoRepository : RepositoryBase<Emprestimo>, IDisposable
     {
+
+        public List<Emprestimo> ListarEmprestimos()
+        {
+            return this.bibliotecaContext.Set<Emprestimo>().Include("Usuario").Include("Livros.Editora").Include("Livros.Autor").ToList();
+
+        }
+
+
     }
 }

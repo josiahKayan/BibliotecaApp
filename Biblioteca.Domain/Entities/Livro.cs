@@ -17,7 +17,7 @@ namespace Biblioteca.Domain.Entities
         public int Edicao { get; set; }
         public  Editora Editora { get; set; }
         public virtual ICollection<Autor> Autor { get; set; }
-        public virtual ICollection<Emprestimo> Emprestimos { get; set; }
+        //public virtual ICollection<Emprestimo> Emprestimos { get; set; }
 
 
     }

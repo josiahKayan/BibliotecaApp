@@ -96,18 +96,23 @@ namespace BibliotecaApp.Controllers
         [Route("listar")]
         public HttpResponseMessage ListarEmprestimos()
         {
-
-            List<Emprestimo> emprestimos = null;
-
-            using (var repository = new EmprestimoRepository())
+            try
             {
-                emprestimos = repository.ListAll();
+                List<Emprestimo> emprestimos = null;
+
+                using (var repository = new EmprestimoRepository())
+                {
+                    emprestimos = repository.ListarEmprestimos();
+                    return Request.CreateResponse(HttpStatusCode.OK, emprestimos);
+
+                }
 
             }
+            catch ( Exception e)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, e.Message);
 
-
-            return Request.CreateResponse(HttpStatusCode.OK, emprestimos);
-
+            }
 
         }
 
